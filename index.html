@@ -80,7 +80,8 @@ section.alt{background:linear-gradient(180deg,rgba(255,255,255,.012),transparent
 .cat-btn:hover{transform:translateY(-2px);}
 .cat-btn.active{border-color:var(--amber);box-shadow:0 2px 18px rgba(129,140,248,.18),0 18px 50px -34px rgba(129,140,248,.5);}
 .cat-btn.active::before{display:none;}
-.cat-icon{font-size:32px;line-height:1;}
+.cat-icon{display:flex;align-items:flex-end;justify-content:center;gap:2px;font-size:26px;line-height:1;}
+.cat-icon span:nth-child(2){font-size:32px;margin:0 -2px;}
 .cat-label{font-family:var(--display);font-size:14px;font-weight:700;color:var(--text);}
 .cat-btn.active .cat-label{color:var(--amber);}
 .tab-content{display:none;margin-top:20px;}
@@ -390,19 +391,19 @@ footer p{color:var(--dim);font-size:15px;max-width:420px;margin:0 auto 24px;}
 
   <div class="cat-bar" id="cat-bar">
     <button class="cat-btn active" onclick="switchTab('cat','fashion',this)">
-      <div class="cat-icon">👗</div>
+      <div class="cat-icon"><span>👠</span><span>👗</span><span>👜</span></div>
       <div class="cat-label">Fashion</div>
     </button>
     <button class="cat-btn" onclick="switchTab('cat','cosmetics',this)">
-      <div class="cat-icon">💄</div>
+      <div class="cat-icon"><span>💅</span><span>💄</span><span>🧴</span></div>
       <div class="cat-label">Cosmetics</div>
     </button>
     <button class="cat-btn" onclick="switchTab('cat','toys',this)">
-      <div class="cat-icon">🧸</div>
+      <div class="cat-icon"><span>🎲</span><span>🧸</span><span>🚗</span></div>
       <div class="cat-label">Toys</div>
     </button>
     <button class="cat-btn" onclick="switchTab('cat','multi',this)">
-      <div class="cat-icon">🛒</div>
+      <div class="cat-icon"><span>🏷️</span><span>🛒</span><span>📦</span></div>
       <div class="cat-label">Marketplace</div>
     </button>
   </div>
