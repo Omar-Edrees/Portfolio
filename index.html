@@ -83,12 +83,14 @@ section.alt{background:linear-gradient(180deg,rgba(255,255,255,.012),transparent
 
 /* Case selector — big tracking-style cards */
 .case-bar{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
-@media(min-width:700px){.case-bar{grid-template-columns:repeat(4,1fr);}
+@media(min-width:700px){.case-bar{grid-template-columns:repeat(2,1fr);}
   .case-bar.has-active{grid-template-columns:repeat(3,1fr);}}
-.case-btn{padding:16px 16px;background:var(--panel2);border:1px solid var(--border);border-radius:var(--r);color:var(--dim);text-align:left;cursor:pointer;transition:border-color .2s,box-shadow .2s,transform .2s,padding .3s;box-shadow:0 2px 14px rgba(129,140,248,.07);}
-.case-btn:hover{border-color:var(--mute);}
+.case-btn{position:relative;padding:18px 20px;background:var(--panel2);border:1px solid transparent;border-radius:var(--r);color:var(--dim);text-align:left;cursor:pointer;transition:box-shadow .2s,transform .2s,padding .3s;box-shadow:0 2px 14px rgba(129,140,248,.07);}
+.case-btn::before{content:'';position:absolute;inset:0;border-radius:inherit;padding:1.3px;background:linear-gradient(135deg,rgba(129,140,248,.62) 0%,rgba(167,139,250,.42) 48%,rgba(244,114,182,.5) 100%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;}
+.case-btn:hover{transform:translateY(-2px);}
 .case-btn.active{grid-column:1/-1;padding:26px 30px;border-color:var(--amber);box-shadow:0 2px 18px rgba(129,140,248,.18),0 18px 50px -34px rgba(129,140,248,.5);}
-.case-btn .cb-n{font-family:var(--mono);font-size:17px;font-weight:700;color:var(--text);transition:font-size .3s;}
+.case-btn.active::before{display:none;}
+.case-btn .cb-n{font-family:var(--mono);font-size:19px;font-weight:700;color:var(--text);transition:font-size .3s;}
 .case-btn.active .cb-n{color:var(--amber);font-size:clamp(22px,4vw,30px);}
 .case-btn .cb-l{font-size:11px;color:var(--mute);margin-top:4px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.04em;}
 .case-btn.active .cb-l{font-size:12.5px;margin-top:6px;}
