@@ -180,6 +180,12 @@ footer p{color:var(--dim);font-size:15px;max-width:420px;margin:0 auto 24px;}
 .c-btn.whatsapp:hover{background:#25D366;color:#fff;}
 .foot-note{margin-top:40px;font-family:var(--mono);font-size:11px;color:var(--mute);}
 
+/* ─── Sticky WhatsApp button ────────────────── */
+.wa-float{position:fixed;right:18px;bottom:18px;z-index:150;width:56px;height:56px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(37,211,102,.45);transition:transform .2s,box-shadow .2s;}
+.wa-float:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 8px 24px rgba(37,211,102,.55);}
+.wa-float svg{width:28px;height:28px;}
+@media(max-width:480px){.wa-float{right:14px;bottom:14px;width:50px;height:50px;}.wa-float svg{width:25px;height:25px;}}
+
 /* ─── Lightbox ──────────────────────────────── */
 #lb{position:fixed;inset:0;background:rgba(2,4,8,.95);display:none;align-items:center;justify-content:center;z-index:200;padding:20px;cursor:zoom-out;}
 #lb.open{display:flex;}
@@ -938,6 +944,8 @@ footer p{color:var(--dim);font-size:15px;max-width:420px;margin:0 auto 24px;}
 
 <!-- LIGHTBOX -->
 <div id="lb"><img id="lb-img" src="" alt=""></div>
+
+<a class="wa-float" href="https://wa.me/201556318082" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.51 2 12.04 2zm5.71 14.02c-.24.68-1.19 1.25-1.95 1.4-.52.1-1.2.19-3.48-.75-2.92-1.21-4.8-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.27-.29.59-.36.79-.36.2 0 .39 0 .56.01.18.01.42-.07.66.5.24.58.83 2 .9 2.15.07.15.12.32.02.51-.09.19-.14.31-.27.48-.14.17-.29.37-.41.5-.14.14-.28.29-.12.57.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.28.14.44.12.6-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.52.72 1.78.85.26.13.43.19.5.3.07.11.07.62-.17 1.3z"/></svg></a>
 
 <script>
 function flipButtons(buttons, firstRects, restoreTransition){
