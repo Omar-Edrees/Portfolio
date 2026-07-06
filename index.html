@@ -80,8 +80,8 @@ section.alt{background:linear-gradient(180deg,rgba(255,255,255,.012),transparent
 .cat-btn:hover{transform:translateY(-2px);}
 .cat-btn.active{border-color:var(--amber);box-shadow:0 2px 18px rgba(129,140,248,.18),0 18px 50px -34px rgba(129,140,248,.5);}
 .cat-btn.active::before{display:none;}
-.cat-icon{display:flex;align-items:flex-end;justify-content:center;gap:2px;font-size:26px;line-height:1;}
-.cat-icon span:nth-child(2){font-size:32px;margin:0 -2px;}
+.cat-icon{display:flex;align-items:center;justify-content:center;}
+.cat-icon svg{width:76px;height:54px;}
 .cat-label{font-family:var(--display);font-size:14px;font-weight:700;color:var(--text);}
 .cat-btn.active .cat-label{color:var(--amber);}
 .tab-content{display:none;margin-top:20px;}
@@ -391,19 +391,71 @@ footer p{color:var(--dim);font-size:15px;max-width:420px;margin:0 auto 24px;}
 
   <div class="cat-bar" id="cat-bar">
     <button class="cat-btn active" onclick="switchTab('cat','fashion',this)">
-      <div class="cat-icon"><span>👠</span><span>👗</span><span>👜</span></div>
+      <div class="cat-icon"><svg viewBox="0 0 100 70" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12,20 a8,9 0 0 1 16,0" stroke="#B45309" stroke-width="3" fill="none"/>
+        <rect x="5" y="20" width="26" height="24" rx="4" fill="#D97706"/>
+        <rect x="5" y="29" width="26" height="3" fill="#92400E"/>
+        <path d="M40,8 L60,8 L57,30 L43,30 Z" fill="#DB2777"/>
+        <path d="M43,30 L57,30 L68,62 L32,62 Z" fill="#EC4899"/>
+        <line x1="42" y1="9" x2="38" y2="2" stroke="#DB2777" stroke-width="2"/>
+        <line x1="58" y1="9" x2="62" y2="2" stroke="#DB2777" stroke-width="2"/>
+        <path d="M64,56 Q64,46 74,42 L83,42 Q88,43 88,50 L88,56 Q88,59 84,59 L67,59 Q64,59 64,56 Z" fill="#DC2626"/>
+        <path d="M83,42 Q88,43 88,50 L88,58 L84,58 L84,45 Z" fill="#B91C1C"/>
+        <path d="M84,58 L89,58 L91,68 L86,68 Z" fill="#111827"/>
+        <path d="M64,56 Q64,59 67,59 L84,59 L84,61 L65,61 Q63,61 63,58 Z" fill="#111827"/>
+      </svg></div>
       <div class="cat-label">Fashion</div>
     </button>
     <button class="cat-btn" onclick="switchTab('cat','cosmetics',this)">
-      <div class="cat-icon"><span>💅</span><span>💄</span><span>🧴</span></div>
+      <div class="cat-icon"><svg viewBox="0 0 100 70" xmlns="http://www.w3.org/2000/svg">
+        <rect x="8" y="12" width="6" height="7" fill="#111827"/>
+        <path d="M6,19 h10 l2,28 a5,5 0 0 1 -14,0 Z" fill="#E11D48"/>
+        <rect x="42" y="30" width="16" height="26" rx="2" fill="#E5E7EB"/>
+        <rect x="42" y="44" width="16" height="4" fill="#9CA3AF"/>
+        <path d="M44,30 Q44,18 50,11 Q56,18 56,30 Z" fill="#DC2626"/>
+        <rect x="72" y="26" width="24" height="20" rx="3" fill="#F5F5F0"/>
+        <rect x="70" y="20" width="28" height="8" rx="3" fill="#E7E5E4"/>
+      </svg></div>
       <div class="cat-label">Cosmetics</div>
     </button>
     <button class="cat-btn" onclick="switchTab('cat','toys',this)">
-      <div class="cat-icon"><span>🎲</span><span>🧸</span><span>🚗</span></div>
+      <div class="cat-icon"><svg viewBox="0 0 100 70" xmlns="http://www.w3.org/2000/svg">
+        <rect x="6" y="34" width="22" height="22" rx="5" fill="#F8FAFC"/>
+        <circle cx="12" cy="40" r="1.8" fill="#1E293B"/>
+        <circle cx="22" cy="40" r="1.8" fill="#1E293B"/>
+        <circle cx="17" cy="45" r="1.8" fill="#1E293B"/>
+        <circle cx="12" cy="50" r="1.8" fill="#1E293B"/>
+        <circle cx="22" cy="50" r="1.8" fill="#1E293B"/>
+        <circle cx="50" cy="16" r="6" fill="#B45309"/>
+        <circle cx="60" cy="16" r="6" fill="#B45309"/>
+        <circle cx="55" cy="24" r="13" fill="#D97706"/>
+        <ellipse cx="55" cy="27" rx="6" ry="5" fill="#FDE68A"/>
+        <circle cx="52" cy="24" r="1.3" fill="#1E293B"/>
+        <circle cx="58" cy="24" r="1.3" fill="#1E293B"/>
+        <ellipse cx="55" cy="45" rx="15" ry="17" fill="#D97706"/>
+        <ellipse cx="55" cy="47" rx="8" ry="9" fill="#FDE68A"/>
+        <path d="M70,52 L74,42 a4,4 0 0 1 4,-2 L92,40 a4,4 0 0 1 4,3 L98,52 Z" fill="#DC2626"/>
+        <rect x="68" y="50" width="32" height="8" rx="2" fill="#DC2626"/>
+        <rect x="78" y="43" width="10" height="7" fill="#93C5FD"/>
+        <circle cx="76" cy="59" r="5" fill="#1E293B"/>
+        <circle cx="92" cy="59" r="5" fill="#1E293B"/>
+        <circle cx="76" cy="59" r="2" fill="#9CA3AF"/>
+        <circle cx="92" cy="59" r="2" fill="#9CA3AF"/>
+      </svg></div>
       <div class="cat-label">Toys</div>
     </button>
     <button class="cat-btn" onclick="switchTab('cat','multi',this)">
-      <div class="cat-icon"><span>🏷️</span><span>🛒</span><span>📦</span></div>
+      <div class="cat-icon"><svg viewBox="0 0 100 70" xmlns="http://www.w3.org/2000/svg">
+        <rect x="55" y="8" width="26" height="24" fill="#D97706"/>
+        <line x1="55" y1="8" x2="81" y2="32" stroke="#92400E" stroke-width="1.5"/>
+        <line x1="81" y1="8" x2="55" y2="32" stroke="#92400E" stroke-width="1.5"/>
+        <path d="M10,20 h8 l10,32 h40 l8,-24 h-52" fill="none" stroke="#94A3B8" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M22,28 h44" stroke="#94A3B8" stroke-width="3" fill="none"/>
+        <circle cx="34" cy="60" r="5.5" fill="#334155"/>
+        <circle cx="64" cy="60" r="5.5" fill="#334155"/>
+        <circle cx="34" cy="60" r="2" fill="#94A3B8"/>
+        <circle cx="64" cy="60" r="2" fill="#94A3B8"/>
+      </svg></div>
       <div class="cat-label">Marketplace</div>
     </button>
   </div>
