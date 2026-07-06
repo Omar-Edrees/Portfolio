@@ -971,10 +971,11 @@ function switchCat(id, btn){
   document.querySelectorAll('.cat-panel').forEach(function(el){ el.classList.remove('active'); });
   buttons.forEach(function(b){ b.classList.remove('active'); });
 
+  buttons.slice().sort(function(a,b){ return (+a.dataset.order) - (+b.dataset.order); })
+         .forEach(function(b){ bar.appendChild(b); });
+
   if(wasActive){
     bar.classList.remove('has-active');
-    buttons.slice().sort(function(a,b){ return (+a.dataset.order) - (+b.dataset.order); })
-           .forEach(function(b){ bar.appendChild(b); });
   }else{
     document.getElementById('cat-'+id).classList.add('active');
     btn.classList.add('active');
@@ -994,10 +995,11 @@ function switchCase(id, btn){
   document.querySelectorAll('[id^="cs-c"]').forEach(function(el){el.classList.remove('active');});
   buttons.forEach(function(b){b.classList.remove('active');});
 
+  buttons.slice().sort(function(a,b){ return (+a.dataset.order) - (+b.dataset.order); })
+         .forEach(function(b){ bar.appendChild(b); });
+
   if(wasActive){
     bar.classList.remove('has-active');
-    buttons.slice().sort(function(a,b){ return (+a.dataset.order) - (+b.dataset.order); })
-           .forEach(function(b){ bar.appendChild(b); });
   }else{
     document.getElementById('cs-'+id).classList.add('active');
     btn.classList.add('active');
