@@ -940,6 +940,28 @@ footer p{color:var(--dim);font-size:15px;max-width:420px;margin:0 auto 24px;}
 <div id="lb"><img id="lb-img" src="" alt=""></div>
 
 <script>
+function flipButtons(buttons, firstRects, restoreTransition){
+  buttons.forEach(function(b, i){
+    var last = b.getBoundingClientRect();
+    var dx = firstRects[i].left - last.left;
+    var dy = firstRects[i].top - last.top;
+    if(dx || dy){
+      b.style.transition = 'none';
+      b.style.willChange = 'transform';
+      b.style.transform = 'translate('+dx+'px,'+dy+'px)';
+      void b.offsetWidth; // force reflow so the jump above applies before animating back
+      b.style.transition = restoreTransition;
+      b.style.transform = '';
+      b.addEventListener('transitionend', function cleanup(e){
+        if(e.propertyName !== 'transform') return;
+        b.style.transition = '';
+        b.style.willChange = '';
+        b.removeEventListener('transitionend', cleanup);
+      });
+    }
+  });
+}
+
 function switchCat(id, btn){
   var bar = document.getElementById('cat-bar');
   var buttons = Array.prototype.slice.call(bar.querySelectorAll('button'));
@@ -960,19 +982,7 @@ function switchCat(id, btn){
     bar.appendChild(btn);
   }
 
-  buttons.forEach(function(b, i){
-    var last = b.getBoundingClientRect();
-    var dx = firstRects[i].left - last.left;
-    var dy = firstRects[i].top - last.top;
-    if(dx || dy){
-      b.style.transition = 'none';
-      b.style.transform = 'translate('+dx+'px,'+dy+'px)';
-      requestAnimationFrame(function(){
-        b.style.transition = 'transform .45s cubic-bezier(.4,0,.2,1)';
-        b.style.transform = '';
-      });
-    }
-  });
+  flipButtons(buttons, firstRects, 'transform .45s cubic-bezier(.4,0,.2,1), height .35s, box-shadow .2s');
 }
 
 function switchCase(id, btn){
@@ -995,19 +1005,7 @@ function switchCase(id, btn){
     bar.appendChild(btn);
   }
 
-  buttons.forEach(function(b, i){
-    var last = b.getBoundingClientRect();
-    var dx = firstRects[i].left - last.left;
-    var dy = firstRects[i].top - last.top;
-    if(dx || dy){
-      b.style.transition = 'none';
-      b.style.transform = 'translate('+dx+'px,'+dy+'px)';
-      requestAnimationFrame(function(){
-        b.style.transition = 'transform .45s cubic-bezier(.4,0,.2,1)';
-        b.style.transform = '';
-      });
-    }
-  });
+  flipButtons(buttons, firstRects, 'transform .45s cubic-bezier(.4,0,.2,1), padding .3s, box-shadow .2s');
 }
 
 function toggleAcc(btn){
