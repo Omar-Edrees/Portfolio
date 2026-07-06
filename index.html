@@ -101,7 +101,7 @@ section.alt{background:linear-gradient(180deg,rgba(255,255,255,.012),transparent
 figcaption{font-family:var(--mono);font-size:11px;color:var(--mute);}
 
 /* ─── Case study card ───────────────────────── */
-.case-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;}
+.case-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:0 2px 18px rgba(129,140,248,.08),0 18px 50px -34px rgba(129,140,248,.35);}
 .case-card-head{padding:26px 24px 16px;}
 .case-badge{font-family:var(--mono);font-size:10px;color:var(--amber);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;}
 .case-card h3{font-size:clamp(17px,3.5vw,22px);line-height:1.25;max-width:700px;}
@@ -172,15 +172,15 @@ footer p{color:var(--dim);font-size:15px;max-width:420px;margin:0 auto 24px;}
 /* ─── Platform & Tool cards ─────────────────── */
 .plat-grid{display:grid;grid-template-columns:repeat(1,1fr);gap:14px;margin-top:24px;}
 @media(min-width:560px){.plat-grid{grid-template-columns:repeat(3,1fr);}}
-.plat-card{border-radius:var(--r);padding:32px 20px;text-align:center;border:1px solid var(--border);background:var(--panel);display:flex;flex-direction:column;align-items:center;gap:14px;transition:transform .15s,border-color .15s;}
-.plat-card:hover{transform:translateY(-3px);border-color:var(--mute);}
+.plat-card{border-radius:var(--r);padding:32px 20px;text-align:center;border:1px solid var(--border);background:var(--panel);display:flex;flex-direction:column;align-items:center;gap:14px;transition:transform .15s,border-color .15s,box-shadow .15s;box-shadow:0 2px 14px rgba(129,140,248,.07);}
+.plat-card:hover{transform:translateY(-3px);border-color:var(--amber);box-shadow:0 2px 18px rgba(129,140,248,.15),0 18px 50px -34px rgba(129,140,248,.5);}
 .plat-card .plat-icon{width:56px;height:56px;display:flex;align-items:center;justify-content:center;}
 .plat-card h3{font-family:var(--display);font-size:18px;font-weight:700;color:var(--text);}
 .plat-card span{font-family:var(--mono);font-size:11px;color:var(--dim);letter-spacing:.05em;}
 
 .tool-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:24px;}
 @media(min-width:480px){.tool-grid{grid-template-columns:repeat(3,1fr);}}
-.tool-card{border-radius:var(--r);padding:24px 14px;text-align:center;border:1px solid var(--border);background:var(--panel2);display:flex;flex-direction:column;align-items:center;gap:10px;}
+.tool-card{border-radius:var(--r);padding:24px 14px;text-align:center;border:1px solid var(--border);background:var(--panel2);display:flex;flex-direction:column;align-items:center;gap:10px;box-shadow:0 2px 14px rgba(129,140,248,.07);}
 .tool-card .tool-icon{width:40px;height:40px;display:flex;align-items:center;justify-content:center;}
 .tool-card h4{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--text);letter-spacing:.03em;}
 </style>
