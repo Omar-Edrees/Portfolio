@@ -81,12 +81,20 @@ section.alt{background:linear-gradient(180deg,rgba(255,255,255,.012),transparent
 .tab-content{display:none;margin-top:20px;}
 .tab-content.active{display:block;}
 
-/* Case tab bar — scrollable on mobile */
-.case-bar{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch;}
-.case-bar::-webkit-scrollbar{height:3px;}
-.case-bar::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
-.case-btn{flex-shrink:0;padding:10px 18px;background:var(--panel);border:1px solid var(--border);border-radius:24px;color:var(--dim);font-size:13px;font-family:var(--mono);white-space:nowrap;transition:border-color .2s,color .2s;}
-.case-btn.active{border-color:var(--amber);color:var(--amber);}
+/* Case selector — big tracking-style cards */
+.case-bar{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+@media(min-width:700px){.case-bar{grid-template-columns:repeat(4,1fr);}}
+.case-btn{padding:16px 16px;background:var(--panel2);border:1px solid var(--border);border-radius:var(--r);color:var(--dim);text-align:left;cursor:pointer;transition:border-color .2s,box-shadow .2s,transform .2s;}
+.case-btn:hover{border-color:var(--mute);}
+.case-btn.active{border-color:var(--amber);box-shadow:0 2px 18px rgba(129,140,248,.18),0 18px 50px -34px rgba(129,140,248,.5);}
+.case-btn .cb-n{font-family:var(--mono);font-size:17px;font-weight:700;color:var(--text);}
+.case-btn.active .cb-n{color:var(--amber);}
+.case-btn .cb-l{font-size:11px;color:var(--mute);margin-top:4px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.04em;}
+
+/* Case content — accordion drop-down (grid-rows trick) */
+.case-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.4,0,.2,1);margin-top:16px;}
+.case-panel>.case-card{overflow:hidden;min-height:0;}
+.case-panel.active{grid-template-rows:1fr;}
 
 /* ─── Screenshot gallery ────────────────────── */
 .gallery{display:grid;gap:14px;}
@@ -101,7 +109,8 @@ section.alt{background:linear-gradient(180deg,rgba(255,255,255,.012),transparent
 figcaption{font-family:var(--mono);font-size:11px;color:var(--mute);}
 
 /* ─── Case study card ───────────────────────── */
-.case-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:0 2px 18px rgba(129,140,248,.08),0 18px 50px -34px rgba(129,140,248,.35);}
+.case-card{background:var(--panel);border:0 solid var(--border);border-radius:var(--r);overflow:hidden;}
+.case-panel.active>.case-card{border-width:1px;box-shadow:0 2px 18px rgba(129,140,248,.08),0 18px 50px -34px rgba(129,140,248,.35);}
 .case-card-head{padding:26px 24px 16px;}
 .case-badge{font-family:var(--mono);font-size:10px;color:var(--amber);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;}
 .case-card h3{font-size:clamp(17px,3.5vw,22px);line-height:1.25;max-width:700px;}
@@ -530,14 +539,26 @@ footer p{color:var(--dim);font-size:15px;max-width:420px;margin:0 auto 24px;}
   </div>
 
   <div class="case-bar" id="cs-bar">
-    <button class="case-btn active" onclick="switchCase('c1',this)">266K → 1.5M EGP</button>
-    <button class="case-btn" onclick="switchCase('c2',this)">ROAS 16× · Fashion</button>
-    <button class="case-btn" onclick="switchCase('c3',this)">660K Sales · Toys</button>
-    <button class="case-btn" onclick="switchCase('c4',this)">5 Markets · Cosmetics</button>
+    <button class="case-btn" onclick="switchCase('c1',this)">
+      <div class="cb-n">266K → 1.5M</div>
+      <div class="cb-l">EGP · Semcem</div>
+    </button>
+    <button class="case-btn" onclick="switchCase('c2',this)">
+      <div class="cb-n">ROAS 16×</div>
+      <div class="cb-l">Fashion · Marche</div>
+    </button>
+    <button class="case-btn" onclick="switchCase('c3',this)">
+      <div class="cb-n">660K Sales</div>
+      <div class="cb-l">Toys · Toytopia</div>
+    </button>
+    <button class="case-btn" onclick="switchCase('c4',this)">
+      <div class="cb-n">5 Markets</div>
+      <div class="cb-l">Cosmetics · Mind Div</div>
+    </button>
   </div>
 
   <!-- CASE 1: SEMCEM -->
-  <div id="cs-c1" class="tab-content active" style="margin-top:16px;">
+  <div id="cs-c1" class="case-panel">
     <div class="case-card">
       <div class="case-card-head">
         <div class="case-badge">CASE 01 · Semcem · Sep 2025 → 2026</div>
@@ -583,7 +604,7 @@ footer p{color:var(--dim);font-size:15px;max-width:420px;margin:0 auto 24px;}
   </div>
 
   <!-- CASE 2: MARCHE -->
-  <div id="cs-c2" class="tab-content" style="margin-top:16px;">
+  <div id="cs-c2" class="case-panel">
     <div class="case-card">
       <div class="case-card-head">
         <div class="case-badge">CASE 02 · Marche Egypt · 2024 → 2025</div>
@@ -639,7 +660,7 @@ footer p{color:var(--dim);font-size:15px;max-width:420px;margin:0 auto 24px;}
   </div>
 
   <!-- CASE 3: TOYTOPIA -->
-  <div id="cs-c3" class="tab-content" style="margin-top:16px;">
+  <div id="cs-c3" class="case-panel">
     <div class="case-card">
       <div class="case-card-head">
         <div class="case-badge">CASE 03 · Toytopia · Jun 2025 → Present</div>
@@ -678,7 +699,7 @@ footer p{color:var(--dim);font-size:15px;max-width:420px;margin:0 auto 24px;}
   </div>
 
   <!-- CASE 4: MIND DIV -->
-  <div id="cs-c4" class="tab-content" style="margin-top:16px;">
+  <div id="cs-c4" class="case-panel">
     <div class="case-card">
       <div class="case-card-head">
         <div class="case-badge">CASE 04 · Mind Div · 2023 → 2024</div>
@@ -873,10 +894,29 @@ function switchTab(group, id, btn){
 }
 
 function switchCase(id, btn){
-  document.querySelectorAll('[id^="cs-"]').forEach(function(el){el.classList.remove('active');});
-  document.getElementById('cs-bar').querySelectorAll('button').forEach(function(b){b.classList.remove('active');});
+  var bar = document.getElementById('cs-bar');
+  var buttons = Array.prototype.slice.call(bar.querySelectorAll('button'));
+  var firstRects = buttons.map(function(b){ return b.getBoundingClientRect(); });
+
+  document.querySelectorAll('[id^="cs-c"]').forEach(function(el){el.classList.remove('active');});
+  buttons.forEach(function(b){b.classList.remove('active');});
   document.getElementById('cs-'+id).classList.add('active');
   btn.classList.add('active');
+  bar.appendChild(btn);
+
+  buttons.forEach(function(b, i){
+    var last = b.getBoundingClientRect();
+    var dx = firstRects[i].left - last.left;
+    var dy = firstRects[i].top - last.top;
+    if(dx || dy){
+      b.style.transition = 'none';
+      b.style.transform = 'translate('+dx+'px,'+dy+'px)';
+      requestAnimationFrame(function(){
+        b.style.transition = 'transform .45s cubic-bezier(.4,0,.2,1)';
+        b.style.transform = '';
+      });
+    }
+  });
 }
 
 function toggleAcc(btn){
