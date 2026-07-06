@@ -83,13 +83,15 @@ section.alt{background:linear-gradient(180deg,rgba(255,255,255,.012),transparent
 
 /* Case selector — big tracking-style cards */
 .case-bar{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
-@media(min-width:700px){.case-bar{grid-template-columns:repeat(4,1fr);}}
-.case-btn{padding:16px 16px;background:var(--panel2);border:1px solid var(--border);border-radius:var(--r);color:var(--dim);text-align:left;cursor:pointer;transition:border-color .2s,box-shadow .2s,transform .2s;}
+@media(min-width:700px){.case-bar{grid-template-columns:repeat(4,1fr);}
+  .case-bar.has-active{grid-template-columns:repeat(3,1fr);}}
+.case-btn{padding:16px 16px;background:var(--panel2);border:1px solid var(--border);border-radius:var(--r);color:var(--dim);text-align:left;cursor:pointer;transition:border-color .2s,box-shadow .2s,transform .2s,padding .3s;}
 .case-btn:hover{border-color:var(--mute);}
-.case-btn.active{border-color:var(--amber);box-shadow:0 2px 18px rgba(129,140,248,.18),0 18px 50px -34px rgba(129,140,248,.5);}
-.case-btn .cb-n{font-family:var(--mono);font-size:17px;font-weight:700;color:var(--text);}
-.case-btn.active .cb-n{color:var(--amber);}
+.case-btn.active{grid-column:1/-1;padding:26px 30px;border-color:var(--amber);box-shadow:0 2px 18px rgba(129,140,248,.18),0 18px 50px -34px rgba(129,140,248,.5);}
+.case-btn .cb-n{font-family:var(--mono);font-size:17px;font-weight:700;color:var(--text);transition:font-size .3s;}
+.case-btn.active .cb-n{color:var(--amber);font-size:clamp(22px,4vw,30px);}
 .case-btn .cb-l{font-size:11px;color:var(--mute);margin-top:4px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.04em;}
+.case-btn.active .cb-l{font-size:12.5px;margin-top:6px;}
 
 /* Case content — accordion drop-down (grid-rows trick) */
 .case-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.4,0,.2,1);margin-top:16px;}
@@ -902,6 +904,7 @@ function switchCase(id, btn){
   buttons.forEach(function(b){b.classList.remove('active');});
   document.getElementById('cs-'+id).classList.add('active');
   btn.classList.add('active');
+  bar.classList.add('has-active');
   bar.appendChild(btn);
 
   buttons.forEach(function(b, i){
