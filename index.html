@@ -74,10 +74,15 @@ section.alt{background:linear-gradient(180deg,rgba(255,255,255,.012),transparent
 .sec-h p{font-size:14px;color:var(--dim);}
 
 /* ─── Tab system ────────────────────────────── */
-.tab-bar{display:flex;gap:0;border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--panel);flex-wrap:wrap;}
-.tab-btn{flex:1;min-width:120px;padding:12px 10px;background:none;border:none;color:var(--mute);font-size:13px;font-family:var(--display);font-weight:600;letter-spacing:-.01em;transition:background .2s,color .2s;white-space:nowrap;}
-.tab-btn.active{background:var(--amber);color:#fff;}
-.tab-btn:not(.active):hover{background:rgba(255,255,255,.04);color:var(--text);}
+.cat-bar{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+@media(min-width:700px){.cat-bar{grid-template-columns:repeat(4,1fr);}}
+.cat-btn{position:relative;padding:22px 16px;background:var(--panel2);border:1px solid transparent;border-radius:var(--r);color:var(--dim);text-align:center;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:10px;transition:box-shadow .2s,transform .2s;box-shadow:0 2px 14px rgba(129,140,248,.07);}
+.cat-btn:hover{transform:translateY(-2px);}
+.cat-btn.active{border-color:var(--amber);box-shadow:0 2px 18px rgba(129,140,248,.18),0 18px 50px -34px rgba(129,140,248,.5);}
+.cat-btn.active::before{display:none;}
+.cat-icon{font-size:32px;line-height:1;}
+.cat-label{font-family:var(--display);font-size:14px;font-weight:700;color:var(--text);}
+.cat-btn.active .cat-label{color:var(--amber);}
 .tab-content{display:none;margin-top:20px;}
 .tab-content.active{display:block;}
 
@@ -87,8 +92,8 @@ section.alt{background:linear-gradient(180deg,rgba(255,255,255,.012),transparent
   .case-bar.has-active{grid-template-columns:repeat(3,1fr);}}
 .case-btn{position:relative;padding:18px 20px;background:var(--panel2);border:1px solid transparent;border-radius:var(--r);color:var(--dim);text-align:left;cursor:pointer;transition:box-shadow .2s,transform .2s,padding .3s;box-shadow:0 2px 14px rgba(129,140,248,.07);}
 /* Gradient glow border — shared across all cards */
-.case-btn,.case-card,.acc-item,.flag-card,.plat-card,.tool-card,.cstat,.stats{position:relative;}
-.case-btn::before,.case-card::before,.acc-item::before,.flag-card::before,.plat-card::before,.tool-card::before,.cstat::before,.stats::before{
+.case-btn,.case-card,.acc-item,.flag-card,.plat-card,.tool-card,.cstat,.stats,.cat-btn{position:relative;}
+.case-btn::before,.case-card::before,.acc-item::before,.flag-card::before,.plat-card::before,.tool-card::before,.cstat::before,.stats::before,.cat-btn::before{
   content:'';position:absolute;inset:0;border-radius:inherit;padding:1.3px;
   background:linear-gradient(135deg,rgba(129,140,248,.62) 0%,rgba(167,139,250,.42) 48%,rgba(244,114,182,.5) 100%);
   -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
@@ -383,11 +388,23 @@ footer p{color:var(--dim);font-size:15px;max-width:420px;margin:0 auto 24px;}
     <p>Click on the image to zoom</p>
   </div>
 
-  <div class="tab-bar" id="cat-bar">
-    <button class="tab-btn active" onclick="switchTab('cat','fashion',this)">Fashion</button>
-    <button class="tab-btn" onclick="switchTab('cat','cosmetics',this)">Cosmetics</button>
-    <button class="tab-btn" onclick="switchTab('cat','toys',this)">Toys</button>
-    <button class="tab-btn" onclick="switchTab('cat','multi',this)">Marketplace</button>
+  <div class="cat-bar" id="cat-bar">
+    <button class="cat-btn active" onclick="switchTab('cat','fashion',this)">
+      <div class="cat-icon">👗</div>
+      <div class="cat-label">Fashion</div>
+    </button>
+    <button class="cat-btn" onclick="switchTab('cat','cosmetics',this)">
+      <div class="cat-icon">💄</div>
+      <div class="cat-label">Cosmetics</div>
+    </button>
+    <button class="cat-btn" onclick="switchTab('cat','toys',this)">
+      <div class="cat-icon">🧸</div>
+      <div class="cat-label">Toys</div>
+    </button>
+    <button class="cat-btn" onclick="switchTab('cat','multi',this)">
+      <div class="cat-icon">🛒</div>
+      <div class="cat-label">Marketplace</div>
+    </button>
   </div>
 
   <!-- FASHION TAB -->
@@ -903,7 +920,7 @@ function switchTab(group, id, btn){
   // Hide all contents in this group
   document.querySelectorAll('[id^="'+group+'-"]').forEach(function(el){el.classList.remove('active');});
   // Deactivate all buttons in this bar
-  (btn.closest('.tab-bar')||btn.closest('.case-bar')).querySelectorAll('button').forEach(function(b){b.classList.remove('active');});
+  (btn.closest('.tab-bar')||btn.closest('.case-bar')||btn.closest('.cat-bar')).querySelectorAll('button').forEach(function(b){b.classList.remove('active');});
   document.getElementById(group+'-'+id).classList.add('active');
   btn.classList.add('active');
 }
